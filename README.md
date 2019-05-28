@@ -38,7 +38,7 @@ python find_in_vk.py
 
 ## Example
 
-[Graph's example](https://plot.ly/~alpden/2/#/
+[Graph's example](https://plot.ly/~alpden/2/#/)
 
 ### Project Goals
 
