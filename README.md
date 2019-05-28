@@ -38,7 +38,7 @@ python find_in_vk.py
 
 ## Example
 
-![graph](http://lmsotfy.com/so.png)
+![graph](https://monosnap.com/file/MiiXmT6iSAfu1KDxZbDRsiYkeOQmhO)
 
 ### Project Goals
 
