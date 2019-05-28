@@ -58,11 +58,8 @@ def get_day_mention(timestamps, search):
     return statistics
 
 
-if __name__ == "__main__":
-    timestamps = get_timestamps()
-    statistics = get_day_mention(timestamps, 'Coca Cola')
+def create_graph(statistics):
     x, y = [], []
-
     for day in statistics:
         x.append(day[0])
         y.append(day[1])
@@ -72,4 +69,10 @@ if __name__ == "__main__":
         y=y
     )
     data = [trace]
-    py.plot(data, filename='basic-bar', auto_open=True)
+    py.plot(data, filename='Coca-Cola mentions', auto_open=True)
+
+
+if __name__ == "__main__":
+    timestamps = get_timestamps()
+    statistics = get_day_mention(timestamps, 'Coca Cola')
+    create_graph(statistics)
