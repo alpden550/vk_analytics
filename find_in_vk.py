@@ -29,7 +29,6 @@ def find_mentions(search, start_time, end_time, method='newsfeed.search'):
     url = f'{VK_API}{method}'
     response = requests.get(url, params=parameters)
     if 'error' in response.json():
-        # raise requests.HTTPError(response.json()['error'])
         return None
     return response.json().get('response').get('total_count')
 
