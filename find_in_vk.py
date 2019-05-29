@@ -40,20 +40,28 @@ def get_timestamps(days=7):
     for day in range(1, days + 1):
         yesterday = today - datetime.timedelta(days=day)
         timestamp_start = datetime.datetime(
-            yesterday.year, yesterday.month, yesterday.day).timestamp()
+            yesterday.year,
+            yesterday.month,
+            yesterday.day,
+            hour=0,
+            minute=0).timestamp()
         timestamp_end = datetime.datetime(
-            yesterday.year, yesterday.month, yesterday.day + 1).timestamp()
+            yesterday.year,
+            yesterday.month,
+            yesterday.day,
+            hour=23,
+            minute=59).timestamp()
         timestamps.append((datetime.date(yesterday.year, yesterday.month, yesterday.day),
                            timestamp_start,
                            timestamp_end))
-
     return timestamps
 
 
 def get_day_mention(timestamps, search):
     statistics = []
     for day in timestamps:
-        mention = get_mentions_in_vk(search=search, start_time=day[1], end_time=day[2])
+        mention = get_mentions_in_vk(
+            search=search, start_time=day[1], end_time=day[2])
         statistics.append((day[0], mention))
     return statistics
 
