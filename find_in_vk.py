@@ -60,9 +60,9 @@ def get_timestamps(days=7):
 def get_day_mention(timestamps, search):
     statistics = []
     for day in timestamps:
-        mention = get_mentions_in_vk(
-            search=search, start_time=day[1], end_time=day[2])
-        statistics.append((day[0], mention))
+        data, start_day, end_day = day
+        mention = get_mentions_in_vk(search=search, start_time=start_day, end_time=end_day)
+        statistics.append((data, mention))
     return statistics
 
 
