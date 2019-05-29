@@ -18,7 +18,7 @@ PLOTLY_KEY = os.getenv('PLOTLY_KEY')
 plotly.tools.set_credentials_file(username=PLOTLY_USERNAME, api_key=PLOTLY_KEY)
 
 
-def find_mentions(search, start_time, end_time, method='newsfeed.search'):
+def get_mentions_in_vk(search, start_time, end_time, method='newsfeed.search'):
     parameters = {
         'access_token': ACCESS_TOKEN,
         'v': VERSION,
@@ -53,7 +53,7 @@ def get_timestamps(days=7):
 def get_day_mention(timestamps, search):
     statistics = []
     for day in timestamps:
-        mention = find_mentions(search=search, start_time=day[1], end_time=day[2])
+        mention = get_mentions_in_vk(search=search, start_time=day[1], end_time=day[2])
         statistics.append((day[0], mention))
     return statistics
 
