@@ -60,24 +60,21 @@ def get_timestamps(days=7):
 def get_day_mention(timestamps, search):
     statistics = []
     for day in timestamps:
-        data, start_day, end_day = day
+        date, start_day, end_day = day
         mention = get_mentions_in_vk(search=search, start_time=start_day, end_time=end_day)
-        statistics.append((data, mention))
+        statistics.append((date, mention))
     return statistics
 
 
 def create_graph(statistics):
-    x, y = [], []
-    for day in statistics:
-        x.append(day[0])
-        y.append(day[1])
-
+    x = [date for date, mentions in statistics]
+    y = [mentions for date, mentions in statistics]
     trace = go.Bar(
         x=x,
         y=y
     )
-    data = [trace]
-    py.plot(data, filename='Coca-Cola mentions', auto_open=True)
+
+    py.plot([trace], filename='Coca-Cola mentions', auto_open=True)
 
 
 if __name__ == "__main__":
