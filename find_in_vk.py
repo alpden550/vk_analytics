@@ -1,6 +1,7 @@
 import datetime
 import os
 import requests
+import argparse
 from dotenv import load_dotenv
 import plotly
 import plotly.plotly as py
@@ -66,7 +67,7 @@ def get_day_mention(timestamps, search):
     return statistics
 
 
-def create_graph(statistics):
+def create_graph(statistics, graph_name='Graph'):
     x = [date for date, mentions in statistics]
     y = [mentions for date, mentions in statistics]
     trace = go.Bar(
@@ -74,10 +75,18 @@ def create_graph(statistics):
         y=y
     )
 
-    py.plot([trace], filename='Coca-Cola mentions', auto_open=True)
+    py.plot([trace], filename=f'{graph_name} mentions in VK', auto_open=True)
+
+
+def create_parser():
+    parser = argparse.ArgumentParser(description='Get mentions in VK from exactly period')
+    parser.add_argument('search', help='Enter what to find')
+    parser.add_argument('-p', '--period', help='Enter period', type=int)
+    return parser.parse_args()
 
 
 if __name__ == "__main__":
-    timestamps = get_timestamps()
-    statistics = get_day_mention(timestamps, 'Coca Cola')
+    parser = create_parser()
+    timestamps = get_timestamps(days=parser.period)
+    statistics = get_day_mention(timestamps, parser.search)
     create_graph(statistics)
