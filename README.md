@@ -30,10 +30,14 @@ pip install -r requirements.txt
 
 ## How to use
 
-Run scripts in terminal
+Run scripts in terminal with word for search and period (by default = 7)
 
 ```bash
-python find_in_vk.py
+python find_in_vk.py 'Coca-Cola' --period 15
+```
+
+```bash
+python find_in_vk.py 'Coca-Cola' -p 15
 ```
 
 ## Example
